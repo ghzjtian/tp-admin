@@ -61,6 +61,7 @@ class User extends Admin
         if(intval($id) < 0){
             return info(lang('Data ID exception'), 0);
         }
+        //保护第一个用户，永远不受编辑.
         if (intval($id == 1)) {
             return info(lang('Edit without authorization'), 0);
         }
@@ -85,7 +86,7 @@ class User extends Admin
         }
 
         $data = input('post.');
-        var_dump($data);die;
+//        var_dump($data);die;
         return model('User')->saveData( $data );
     }
 

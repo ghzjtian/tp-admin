@@ -14,6 +14,8 @@ class Role extends Admin
 
     }
 
+
+    //取得状态为 1 的角色表的 name ,id 字段
     public function getKvData()
     {
         return $this->where('status',1)->column('name','id');

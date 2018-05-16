@@ -59,7 +59,10 @@ class User extends Admin
 	{
 		$request = $this->fmtRequest( $request );
 		$data = $this->order('create_time desc')->where( $request['map'] )->limit($request['offset'], $request['limit'])->select();
-		return $this->_fmtData( $data );
+
+		//FINISH,不用格式化数据，否则会不显示.
+//		return $this->_fmtData( $data );
+		return  $data ;
 	}
 
 	public function saveData( $data )
@@ -137,10 +140,22 @@ class User extends Admin
 			return $data;
 		}
 
+
 		foreach ($data as $key => $value) {
-			$data[$key]['create_time'] = date('Y-m-d H:i:s',$value['create_time']);
-			$data[$key]['status'] = $value['status'] == 1 ? lang('Start') : lang('Off');
+            $create_time = date('Y-m-d H:i:s',$value->data['create_time']);
+            $data[$key]['create_time'] =  $create_time;
+            $status = $value['status'] == 1 ? lang('Start') : lang('Off');
+			$data[$key]['status'] = $status;
 		}
+
+//        foreach ($data as $key => $value) {
+////			$data[$key]['create_time'] = date('Y-m-d H:i:s',$value->data['create_time']);
+//            $create_time = date('Y-m-d H:i:s',$value->data['create_time']);
+//            $data[$key]->create_time =  $create_time;
+////			$data[$key]['status'] = $value->data['status'] == 1 ? lang('Start') : lang('Off');
+//            $status = $value->data['status'] == 1 ? lang('Start') : lang('Off');
+//            $data[$key]-> status = $status;
+//        }
 
 		return $data;
 	}

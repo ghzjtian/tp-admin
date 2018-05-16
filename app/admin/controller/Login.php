@@ -38,6 +38,8 @@ class Login extends Common
 
 		$postData = input('post.');
 		$captcha = $postData['captcha'];
+
+		//验证码的用法 : https://www.kancloud.cn/manual/thinkphp5/154295
 		if(!captcha_check($captcha)){
 			return $this->error( lang('Captcha error') );
 		};
@@ -45,12 +47,15 @@ class Login extends Common
 			'mobile'=>$postData['mobile'],
 			'password'=>$postData['password']
 		);
+		//跳到 User 模型那里去验证
 		$ret = Loader::model('User')->login( $loginData );
 		if ($ret['code'] !== 1) {
 			return $this->error( $ret['msg'] );
 		}
 		unset($ret['data']['password']);
+		//保存用户的信息(数据库中保存的信息)到 session
 		Session::set('userinfo', $ret['data'], 'admin');
+		//保存登录的记录.
 		Loader::model('LogRecord')->record( lang('Login succeed') );
 		return $this->success($ret['msg'], url('admin/index/index'));
 	}

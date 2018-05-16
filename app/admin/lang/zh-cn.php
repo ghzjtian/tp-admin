@@ -10,6 +10,7 @@
 // +----------------------------------------------------------------------
 
 // 中文语言包
+//多语言: https://www.kancloud.cn/thinkphp/thinkphp5-guide/90211
 return [
     'Request type error'  => '请求类型错误',
     'Input error'         => '输入错误',

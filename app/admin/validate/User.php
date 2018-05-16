@@ -17,7 +17,7 @@ class User extends Validate
         'mobile.length'       => 'Please enter a correct mobile',
         'password.length'       => 'Please enter a correct password',
     ];
-
+//验证场景: https://www.kancloud.cn/manual/thinkphp5/129322
     protected $scene = [
         'add' => ['mobile','password', 'role_id'],
         'login' =>  ['mobile','password'],

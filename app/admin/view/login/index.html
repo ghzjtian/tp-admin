@@ -1,6 +1,7 @@
 {__NOLAYOUT__}
+<!-- NOLAYOUT 表示不需要布局模板功能,-->
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="zh-caan">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
@@ -49,7 +50,7 @@
                 </div>
 
                 <div class="form-group">
-                    <input id="captcha" name="captcha" type="text"  class="form-control" placeholder="Captcha" required="">
+                    <input id="captcha" name="captcha" type="text"  class="form-control" placeholder="{$Think.lang.Captcha}" required="">
                 </div>
 
                 <div class="form-group" style="float: left;">
@@ -93,7 +94,7 @@
     			} else {
     				$(".msgerr").html(o.msg);
     			}
-                $('.refcaptcha').click();
+                $('.refcaptcha').click();//验证码刷新
     		}, 'json');
     	})
         return false;

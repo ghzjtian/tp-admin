@@ -5,7 +5,7 @@ return [
     'website' => [
         'name' => 'Red-Team',
         'keywords' => 'TPAdmin,高性能，后台管理',
-        'description' => 'ThinkPHP5,高性能，后台管理，权限管理，后台模版，组件化开发，软删除，验证器，多语言，国际化'
+        'description' => 'ThinkPHP5,高性能，后台管理，权限管理，后台模版，组件化开发，软删除keywords，验证器，多语言，国际化'
     ],
     // 默认输出类型
     'default_return_type' => 'html',
@@ -23,7 +23,7 @@ return [
         401 => APP_PATH . 'admin/view' . DS . '401.html',
     ],
 
-    //模板布局
+    //模板布局, https://www.kancloud.cn/manual/thinkphp5/125013
     'template' => [
         'layout_on' => true,
         'layout_name' => 'layout',

@@ -14,10 +14,25 @@ use \think\Session;
  */
 class AuthAccess extends Admin
 {
+
+    /**
+     * @param $uid
+     * @return array
+     *
+     * 以 13330613321 为例:
+     * $role_id = 2
+     * $rule_ids = [3,1]
+     * return : ['admin/index/index','admin/index']
+     *
+     *
+     */
     public function getRuleVals( $uid )
     {
+        //根据用户的 id,获取到 用户的 角色id(role_id).
         $role_id = model('User')->where(['id'=>$uid])->value('role_id');
+        //根据用户的 角色id ,获取到用户拥有的 权限id s(可以有很多的权限).
         $rule_ids = model('AuthAccess')->where(['role_id'=>$role_id])->column('rule_id');
+        //根据 权限ids ,获取到用户可以进入的路径.
         return model('AuthRule')->where('id', 'in', $rule_ids)->column('rule_val');
     }
 

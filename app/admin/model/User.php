@@ -3,6 +3,7 @@ namespace app\admin\model;
 
 use think\Config;
 use think\Db;
+use think\Exception;
 use think\Loader;
 use think\Model;
 use traits\model\SoftDelete;
@@ -20,6 +21,8 @@ class User extends Admin
 		$code = 1;
 		$msg = '';
 		$userValidate = validate('User');
+
+        //验证场景: https://www.kancloud.cn/manual/thinkphp5/129322
 		if(!$userValidate->scene('login')->check($data)) {
 			return info(lang($userValidate->getError()), 4001);
 		}
@@ -29,10 +32,21 @@ class User extends Admin
 		$map = [
 			'mobile' => $data['mobile']
 		];
-		$userRow = $this->where($map)->find();
+
+		//TODO
+//		try{
+            //如果数据库有异常，并没有提示信息反馈,而且 catch 不到异常,只能在 log 中看到 ERROR 信息.
+            $userRow = $this->where($map)->find();
+//        }catch (Exception $e){
+//            return info($e.$msg);
+//        }
+
+
 		if( empty($userRow) ) {
 			return info(lang('You entered the account or password is incorrect, please again'), 5001);
 		}
+		//TODO
+		//获取转换后的密码.(可能不安全，因为密码在明文传输)
 		$md_password = mduser( $data['password'] );
 		if( $userRow['password'] != $md_password ) {
 			return info(lang('You entered the account or password is incorrect, please again'), 5001);

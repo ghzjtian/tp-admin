@@ -26,7 +26,7 @@ class logRecord extends Admin
     }
 
     /**
-     * 浏览器把版本
+     * 浏览器版本
      */
     protected function setBrowserAttr()
     {
@@ -53,15 +53,23 @@ class logRecord extends Admin
         }
         return $user_id;
     }
- 
+
+    /**
+     * @param $remark
+     * 记录下 操作.
+     */
     public function record($remark)
     {
         $this->save(['remark' => $remark]);
     }
 
-
+    /**
+     * 取得不重复的访问的 IP 地址的个数
+     * @return array|int
+     *
+     */
     public function UniqueIpCount()
-    {   
+    {
         $data = $this->column('ip');
         $data = count( array_unique($data) );
         return $data;

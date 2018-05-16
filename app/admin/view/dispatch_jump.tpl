@@ -38,6 +38,7 @@
                             <?php } ?>
                         <p class="detail"></p>
                         <p class="jump">
+
                             {$Think.lang.PageAuto} <a id="href" href="<?php echo($url);?>">{$Think.lang.Jump}</a> {$Think.lang.WaitingTime}： <b id="wait"><?php echo($wait);?></b>
                         </p>
                 </div>

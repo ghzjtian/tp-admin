@@ -38,7 +38,10 @@ class AuthRule extends Admin
         }
     }
 
-    //是否需要检查节点，如果不存在权限节点数据，则不需要检查
+    /**
+     * 是否需要检查节点，如果不存在权限节点数据，则不需要检查
+     *
+    **/
     public function isCheck( $rule_val )
     {
         $rule_val = strtolower($rule_val);

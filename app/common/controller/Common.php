@@ -17,6 +17,7 @@ class Common extends Controller
     public function _initialize()
     {
         $now_lang = $this->getSetLang();
+//        trace($now_lang);
         $this->assign('set_lang', $now_lang);
     }
 
@@ -24,7 +25,8 @@ class Common extends Controller
     public function getSetLang()
     {
         $lang = Lang::detect();
-        if($lang == 'zh-cn') {
+//        trace($lang);
+        if($lang != 'zh-cn') {
             return 'en-us';
         }
         return 'zh-cn';

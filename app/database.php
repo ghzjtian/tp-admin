@@ -13,13 +13,13 @@ return [
     // 数据库类型
     'type'           => 'mysql',
     // 服务器地址
-    'hostname'       => '127.0.0.1',
+    'hostname'       => 'localhost',
     // 数据库名
-    'database'       => 'tp-admin',
+    'database'       => 'tp_admin',
     // 用户名
     'username'       => 'root',
     // 密码
-    'password'       => '',
+    'password'       => 'mysql1230',
     // 端口
     'hostport'       => '3306',
     // 连接dsn
@@ -47,5 +47,5 @@ return [
     // 是否自动写入时间戳字段
     'auto_timestamp' => true,
     // 是否需要进行SQL性能分析
-    'sql_explain'    => false,
+    'sql_explain'    => true,
 ];

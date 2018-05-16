@@ -17,7 +17,7 @@ return [
     // 应用命名空间
     'app_namespace'          => 'app',
     // 应用调试模式
-    'app_debug'              => false,
+    'app_debug'              => true,
     // 应用Trace
      'app_trace'           => true,
     // 应用模式状态
@@ -235,4 +235,21 @@ return [
 
     //写安装程序的时候随即生成authId
     'user_auth_key' => 'authId',
+
+
+    //验证码配置,用法: https://www.kancloud.cn/manual/thinkphp5/154295
+    // 快速入门 ， P207
+    'captcha' => [
+      //字体大小
+        'fontSize' => 115,
+        'length' => 3,//验证码位数
+        'useCurve' => false,//是否画混淆曲线
+//        'bg' => [255,0,0],//背景颜色
+        'expire' => 10,//过期时间
+        'codeSet' => 'abcdefg',//验证码字符集
+        'useImgBg' => false,
+        'useNoise' => false,
+    ],
+
+
 ];
